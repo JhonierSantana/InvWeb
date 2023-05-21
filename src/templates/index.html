@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guardar Producto</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1 class="titleCenter">Guardar Producto</h1>
+
+    <div class="content">
+      <form class="form" action="/" method="POST">
+        <div class="input-cont">
+          <div class="input">
+            <input type="text" name="Cve_Producto"/>
+            <label for="">Clave de producto</label>
+          </div>
+        </div>
+        
+
+        <div class="input-cont">
+          <div class="input">
+            <input type="text" name="Grupo"/>
+            <label for="">Grupo</label>
+          </div>
+        </div>
+
+        <div class="input-cont">
+          <div class="input">
+            <input type="text" name="NombreP"/>
+            <label for="">Nombre</label>
+          </div>
+        </div>
+        <div class="input-cont">
+          <div class="input">
+            <input type="text" name="Precio"/>
+            <label for="">Precio</label>
+          </div>
+        </div>
+        <div class="input-cont">
+          <div class="input">
+            <input type="text" name="Cantidad_Stok"/>
+            <label for="">Cantidad</label>
+          </div>
+        </div>
+        <div class="input-cont">
+          <div class="input">
+            <input type="date" name="FechaEntrada"/>
+            <label for="">Fecha de entrada</label>
+          </div>
+        </div>
+
+        <div class="content1">
+          <div class="search-container">
+            <button type="submit">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="container-card">
+      <div class="card">
+        <figure>
+          <img src="static/shindaiwa.gif">
+        </figure>
+        <div class="contenido-card">
+          <ul>
+            <li><a href="/grupo/Shindaiwa">Shindaiwa</a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="card">
+        <figure>
+          <img src="static/hus-.webp">
+        </figure>
+        <div class="contenido-card">
+          <ul>
+            <li><a href="/grupo/Husvuarna">Husvuarna</a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="card">
+        <figure>
+          <img src="static/maruyama.jpg">
+        </figure>
+        <div class="contenido-card">
+          <ul>
+            <li><a href="/grupo/Maruyama 420">Maruyama 420</a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="card">
+        <figure>
+          <img src="static/tor.jpg">
+        </figure>
+        <div class="contenido-card">
+          <ul>
+            <li><a href="/grupo/Tornillos">Tornillos</a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="card">
+        <figure>
+          <img src="static/guadaña.jpg">
+        </figure>
+        <div class="contenido-card">
+          <ul>
+            <li><a href="/grupo/Guadaña china">Guadaña china</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <figure>
+          <img src="static/estacionaria.jpg">
+        </figure>
+        <div class="contenido-card">
+          <ul>
+            <li><a href="/grupo/Estacionaria">Estacionaria</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <figure>
+          <img src="static/MotoD.webp">
+        </figure>
+        <div class="contenido-card">
+          <ul>
+            <li><a href="/grupo/Motores diesel">Motores diesel 
+            </a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <figure>
+          <img src="static/motorG.webp">
+        </figure>
+        <div class="contenido-card">
+          <ul>
+            <li><a href="/grupo/Motores a gasolina">Motores a gasolina
+            </a></li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <figure>
+          <img src="static/sale.png">
+        </figure>
+        <div class="contenido-card">
+          <ul>
+            <li><a href="/historial_ventas">Historial de Ventas</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+     
+    </div>
+
+  </body>
+</html>
