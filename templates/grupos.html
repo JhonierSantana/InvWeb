@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-</head>
-<body>
-  <form action="/grupo/{{ grupo }}" method="GET">
-    <h2 class="title1">Grupo: {{ grupo }}</h2>
-    <div class="search-container1">
-      <input type="text" class="inputS" name="busqueda" placeholder="Buscar producto" />
-      <button class="btnS" type="submit"><i class="fas fa-search"></i></button>
-    </div>
-  </form>
-  <a href="/">HOME</a>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    />
+  </head>
+  <body>
+    <form action="/grupo/{{ grupo }}" method="GET">
+      <h2 class="title1">Grupo: {{ grupo }}</h2>
+      <div class="search-container1">
+        <input
+          type="text"
+          class="inputS"
+          name="busqueda"
+          placeholder="Buscar producto"
+        />
+        <button class="btnS" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </form>
+    <a href="/">HOME</a>
 
-  {% if productos %}
-    <table>
+    {% if productos %}
+    <table class="table-bordered">
       <thead>
         <tr>
           <th>Clave de producto</th>
           <th>Grupo</th>
           <th>Nombre</th>
           <th>Precio</th>
-          <th>Cantidad de venta</th>
-          <th>Fecha de venta</th>
+          <th>Cantidad Stok</th>
+          <th>Fecha de entrada</th>
+          <th>Precio de Entrada</th>
         </tr>
       </thead>
       <tbody>
@@ -35,45 +50,46 @@
           <td>{{ producto[3] }}</td>
           <td>{{ producto[4] }}</td>
           <td>{{ producto[5] }}</td>
+          <td>{{ producto[6] }}</td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <div class="product-actions">
+              <form action="/ventas/{{ grupo }}" method="post">
+                <input
+                  class="input1"
+                  type="hidden"
+                  name="Nombre_Producto"
+                  value="{{ producto[2] }}"
+                />
+                <div class="inline-form">
+                  <input
+                    class="input1"
+                    type="number"
+                    name="Cantidad_Venta"
+                    placeholder="Cantidad de venta"
+                  />
+                </div>
+                <div class="inline-form">
+                  <input
+                    class="input1"
+                    type="date"
+                    name="Fecha_Venta"
+                    placeholder="Fecha de venta"
+                  />
+                </div>
+                <div class="inline-form">
+                  <button type="submit">Vender</button>
+                </div>
+              </form>
+            </div>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
-
-    <form action="/ventas/{{ grupo }}" method="post" class="form-general">
-      <h3>Venta General</h3>
-      <form class="form" action="/" method="POST">
-        <div class="input-cont">
-          <div class="input">
-            <input type="text" name="Nombre_Producto" />
-            <label for="">Nombre del producto</label>
-          </div>
-        </div>
-    
-        <div class="input-cont">
-          <div class="input">
-            <input type="number" name="Cantidad_Venta" />
-            <label for="">Cantidad de venta</label>
-          </div>
-        </div>
-    
-        <div class="input-cont">
-          <div class="input">
-            <input type="date" name="Fecha_Venta" />
-            <label for="">Fecha de venta</label>
-          </div>
-        </div>
-    
-        <div class="search-container">
-          <button type="submit">Vender</button>
-        </div>
-      </form>
-    </form>
-    
-      
-    </form>
-  {% else %}
+    {% else %}
     <p>No se encontraron productos para este grupo.</p>
-  {% endif %}
-</body>
+    {% endif %}
+  </body>
 </html>

@@ -279,3 +279,32 @@ th {
 tr:nth-child(even) {
 }
 
+.product-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-actions form {
+  display: flex;
+  align-items: center;
+}
+
+.product-actions .inline-form {
+  display: flex;
+  align-items: center;
+}
+
+.product-actions .inline-form label {
+  margin-right: 5px;
+}
+
+.table-bordered {
+  border-collapse: collapse;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #000;
+  padding: 8px;
+}

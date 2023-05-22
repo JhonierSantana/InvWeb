@@ -22,6 +22,7 @@ def guardar_producto():
         precio = request.form["Precio"]
         cantidad_stock = request.form["Cantidad_Stok"]
         fecha_entrada = request.form["FechaEntrada"]
+        precio_entrada = request.form["Precio_Entrada"]
 
         # Guardar los datos en la tabla productos
         cursor = mysql.connection.cursor()
@@ -41,7 +42,7 @@ def guardar_producto():
         else:
             # El producto no existe, insertarlo en la tabla productos
             cursor.execute(
-                "INSERT INTO productos (Cve_Producto, Grupo, NombreP, Precio, Cantidad_Stok, FechaEntrada) VALUES (%s, %s, %s, %s, %s, %s)",
+                "INSERT INTO productos (Cve_Producto, Grupo, NombreP, Precio, Cantidad_Stok, FechaEntrada, Precio_Entrada) VALUES (%s, %s, %s, %s, %s, %s, %s)",
                 (
                     cve_producto,
                     grupo,
@@ -49,6 +50,7 @@ def guardar_producto():
                     precio,
                     cantidad_stock,
                     fecha_entrada,
+                    precio_entrada,
                 ),
             )
 
@@ -63,16 +65,17 @@ def mostrar_productos_grupo(grupo):
     busqueda = request.args.get("busqueda", default="", type=str)
 
     cursor = mysql.connection.cursor()
+    productos = []
+
     if busqueda:
         cursor.execute(
-            "SELECT * FROM productos WHERE Grupo = %s AND NombreP LIKE %s",
-            (grupo, f"%{busqueda}%"),
+            "SELECT * FROM productos WHERE Grupo = %s AND (NombreP LIKE %s OR Cve_Producto = %s)",
+            (grupo, f"%{busqueda}%", busqueda),
         )
-        productos = cursor.fetchall()
     else:
         cursor.execute("SELECT * FROM productos WHERE Grupo = %s", (grupo,))
-        productos = cursor.fetchall()
 
+    productos = cursor.fetchall()
     cursor.close()
 
     return render_template("grupos.html", grupo=grupo, productos=productos)
@@ -146,4 +149,4 @@ def historial_ventas():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
